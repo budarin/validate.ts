@@ -1,0 +1,39 @@
+{
+    "name": "validate.ts",
+    "version": "1.0.0",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "repository": {
+        "url": "https://github.com/budarin/validate.ts.git"
+    },
+    "author": "Vadim Budarin <budarin-vv@yandex.ru>",
+    "license": "MIT",
+    "homepage": "https://github.com/budarin/validate.ts#readme",
+    "bugs": {
+        "url": "https://github.com/budarin/validate.ts/issues"
+    },
+    "description": "Entities validation utils",
+    "keywords": [
+        "validation",
+        "entities",
+        "validation"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "dependencies": {
+        "@budarin/json-rpc-interface": "^1.0.2"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.2"
+    },
+    "scripts": {
+        "build": "sh ./tools/build.sh",
+        "patch-version": "npm version patch",
+        "prepublish": "npm run build",
+        "npm-publish": "npm run build && npm publish",
+        "upgrade deps": "yarn upgrade-interactive --latest;"
+    }
+}
