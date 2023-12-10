@@ -8,6 +8,8 @@ export * from './mustBeInt.js';
 export * from './mustBeUndefinedOrInt.js';
 
 export * from './isHexColor.js';
+export * from './mustBeHexString.js';
+export * from './hexColorValidator.js';
 export * from './isStringWithLength.js';
 export * from './isISODateTimeString.js';
 export * from './stringHasWrongLength.js';
