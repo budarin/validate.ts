@@ -1,5 +1,5 @@
-import { validateEntity, isIntegerInRange, isStringWithLength } from '../index';
-import type { LikeExtended, FieldsValidators, ValidateEntity } from '../types';
+import { validateEntity, isIntegerInRange, isStringWithLength } from '../index.js';
+import type { LikeExtended, FieldsValidators, ValidateEntity } from '../types.js';
 
 type User = {
     name: string;
