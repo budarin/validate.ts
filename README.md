@@ -11,11 +11,8 @@ yarn add @budarin/validate
 ## Usage
 
 ```ts
-import { validateEntity } from '@budarin/validate.ts';
-import { isIntegerInRange } from '@budarin/validate/isIntegerInRange';
-import { isStringWithLength } from '@budarin/validate/isStringWithLength';
-
 import type { LikeExtended, FieldsValidators, ValidateEntity } from '@budarin/validate';
+import { validateEntity, isIntegerInRange, isStringWithLength } from '@budarin/validate.ts';
 
 type User = {
     name: string;

@@ -1,7 +1,5 @@
-import { validateEntity } from '../validateEntity';
-import { isIntegerInRange } from '../isIntegerInRange';
-import { isStringWithLength } from '../isStringWithLength';
-import { LikeExtended, FieldsValidators, ValidateEntity } from '../types';
+import { validateEntity, isIntegerInRange, isStringWithLength } from '../index';
+import type { LikeExtended, FieldsValidators, ValidateEntity } from '../types';
 
 type User = {
     name: string;
