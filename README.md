@@ -11,7 +11,7 @@ yarn add @budarin/validate
 ## Usage
 
 ```ts
-import { validateEntity } from '@budarin/validate';
+import { validateEntity } from '@budarin/validate.ts';
 import { isIntegerInRange } from '@budarin/validate/isIntegerInRange';
 import { isStringWithLength } from '@budarin/validate/isStringWithLength';
 
