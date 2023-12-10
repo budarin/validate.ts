@@ -1,5 +1,5 @@
 import type { ResultOrError } from '@budarin/json-rpc-interface';
-import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended } from './types.js';
+import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended } from './types.ts';
 
 import { isObject } from './isObject.js';
 

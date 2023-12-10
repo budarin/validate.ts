@@ -1,4 +1,4 @@
-import type { Validator } from './types.js';
+import type { Validator } from './types.ts';
 
 import { isInteger } from './isInteger.js';
 

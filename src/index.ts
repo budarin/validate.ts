@@ -1,4 +1,4 @@
-export type * from './types.js';
+export type * from './types.ts';
 export * from './validateEntity.js';
 
 export * from './isInteger.js';

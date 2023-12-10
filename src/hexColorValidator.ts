@@ -1,4 +1,4 @@
-import type { Validator } from './types.js';
+import type { Validator } from './types.ts';
 
 import { isHexColor } from './isHexColor.js';
 import { mustBeHexString } from './mustBeHexString.js';
