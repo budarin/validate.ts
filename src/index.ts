@@ -3,6 +3,8 @@ import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended } from './
 
 import { isObject } from './isObject.js';
 
+export type * from '@budarin/json-rpc-interface';
+
 export const validateEntity = <T>(
     data: unknown,
     fields: FieldsValidators,
