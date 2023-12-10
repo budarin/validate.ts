@@ -6,7 +6,7 @@ type User = {
     age: number;
 };
 
-function getEntity(obj: LikeExtended<User>): User {
+function getUser(obj: LikeExtended<User>): User {
     return {
         name: obj.name,
         age: obj.age,
@@ -15,16 +15,16 @@ function getEntity(obj: LikeExtended<User>): User {
 
 const userFields: FieldsValidators = {
     name: {
-        validators: [[isStringWithLength(3, 50), 'Имя должно быть строкой длиной от 3 до 50 символов']],
+        validators: [[isStringWithLength(2, 50), 'The name must be a string between 2 and 50 characters long']],
         required: true,
     },
     age: {
-        validators: [[isIntegerInRange(16, 100), 'Возраст должен быть целым числом от 16 до 100']],
+        validators: [[isIntegerInRange(1, 100), 'The age must be an integer from 1 to 100']],
         required: true,
     },
 };
 
-const userValidator: ValidateEntity<User> = (data: unknown) => validateEntity(data, userFields, getEntity, 'User');
+const validateUser: ValidateEntity<User> = (data: unknown) => validateEntity(data, userFields, getUser, 'User');
 
 const user = {
     name: 'Ivan',
@@ -32,10 +32,10 @@ const user = {
     hair: 'brown',
 };
 
-const Ivan = userValidator(user);
+const validation = validateUser(user);
 
-if (Ivan.error) {
-    console.log(Ivan.error.message); // => 'Имя должно быть строкой длиной от 3 до 50 символов'
+if (validation.error) {
+    console.log(validation.error.message); // => 'The name must be a string between 2 and 50 characters long'
 }
 
-console.log(Ivan); // => { result: { name: 'Ivan', age: 30 } }
+console.log(validation.result); // => { name: 'Ivan', age: 30 }
