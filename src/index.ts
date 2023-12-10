@@ -1,51 +1,19 @@
-import type { ResultOrError } from '@budarin/json-rpc-interface';
-import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended } from './types.js';
+export type * from './types.js';
+export * from './validateEntity.js';
 
-import { isObject } from './isObject.js';
+export * from './isInteger.js';
+export * from './isIntegerInRange.js';
+export * from './isUndefinedOrInteger.js';
+export * from './mustBeInt.js';
+export * from './mustBeUndefinedOrInt.js';
 
-export type * from '@budarin/json-rpc-interface';
+export * from './isHexColor.js';
+export * from './isStringWithLength.js';
+export * from './isISODateTimeString.js';
+export * from './stringHasWrongLength.js';
 
-export const validateEntity = <T>(
-    data: unknown,
-    fields: FieldsValidators,
-    getEntity: EntityGetter<T>,
-    entityName: string,
-): ResultOrError<T> => {
-    if (isObject(data) === false) {
-        return {
-            error: {
-                message: `Сущность "${entityName}" должна быть объектом`,
-            },
-        };
-    }
+export * from './isBoolean.js';
+export * from './isUndefinedOrBoolean.js';
+export * from './mustBeUndefinedOrBoolean.js';
 
-    const obj = data as AnyObject;
-    const keys = Object.keys(obj);
-
-    for (let i = 0; i < keys.length; i++) {
-        const fieldName = keys[i] as keyof FieldsValidators;
-        const field = fields[fieldName];
-
-        if (!field.required && obj[fieldName] === undefined) {
-            return {
-                error: {
-                    message: `Свойство "${fieldName}" сущности ${entityName} отсутствует`,
-                },
-            };
-        }
-
-        for (let j = 0; j < field.validators.length; j++) {
-            const validator = field.validators[j];
-
-            if (validator[0](obj[fieldName]) === false) {
-                return {
-                    error: {
-                        message: validator[1],
-                    },
-                };
-            }
-        }
-    }
-
-    return { result: getEntity(obj as LikeExtended<T>) };
-};
+export * from './isObject.js';

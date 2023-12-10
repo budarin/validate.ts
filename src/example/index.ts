@@ -1,4 +1,4 @@
-import { validateEntity } from '../index';
+import { validateEntity } from '../validateEntity';
 import { isIntegerInRange } from '../isIntegerInRange';
 import { isStringWithLength } from '../isStringWithLength';
 import { LikeExtended, FieldsValidators, ValidateEntity } from '../types';
