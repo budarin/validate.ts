@@ -1,6 +1,8 @@
 export type * from './types.ts';
 export * from './validateEntity.js';
 
+export * from './isUndefinedOr.js';
+
 export * from './isInteger.js';
 export * from './isIntegerInRange.js';
 export * from './mustBeInt.js';
