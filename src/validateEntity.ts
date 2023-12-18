@@ -26,7 +26,7 @@ export const validateEntity = <T>(
         const fieldName = keys[i] as keyof FieldsValidators;
         const field = fields[fieldName];
 
-        if (!field.required && obj[fieldName] === undefined) {
+        if (field.required === true && obj[fieldName] === undefined) {
             return {
                 error: {
                     message: `Свойство "${fieldName}" сущности ${entityName} отсутствует`,
