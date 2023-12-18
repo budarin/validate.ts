@@ -20,7 +20,7 @@ export const validateEntity = <T>(
     }
 
     const obj = data as AnyObject;
-    const keys = Object.keys(obj);
+    const keys = Object.keys(fields);
 
     for (let i = 0; i < keys.length; i++) {
         const fieldName = keys[i] as keyof FieldsValidators;
