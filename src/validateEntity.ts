@@ -15,6 +15,7 @@ export const validateEntity = <T>(
         return {
             error: {
                 message: `Сущность "${entityName}" должна быть объектом`,
+                data,
             },
         };
     }
@@ -30,6 +31,7 @@ export const validateEntity = <T>(
             return {
                 error: {
                     message: `Свойство "${fieldName}" сущности ${entityName} отсутствует`,
+                    data,
                 },
             };
         }
@@ -41,6 +43,7 @@ export const validateEntity = <T>(
                 return {
                     error: {
                         message: validator[1],
+                        data,
                     },
                 };
             }
