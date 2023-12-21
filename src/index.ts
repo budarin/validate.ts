@@ -2,6 +2,7 @@ export type * from './types.ts';
 export * from './validateEntity.js';
 
 export * from './isUndefinedOr.js';
+export * from './orMustBeUndefined.js';
 
 export * from './isInteger.js';
 export * from './isIntegerInRange.js';
