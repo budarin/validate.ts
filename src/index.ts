@@ -20,3 +20,8 @@ export * from './isBoolean.js';
 export * from './mustBeUndefinedOrBoolean.js';
 
 export * from './isObject.js';
+
+export * from './isString.js';
+export * from './mustBeString.js';
+export * from './isStringFromList.js';
+export * from './mustBeStingFromList.js';
