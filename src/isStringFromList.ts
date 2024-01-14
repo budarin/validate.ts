@@ -1,3 +1,5 @@
-export function isStringFromList(list: string[], str: string): boolean {
-    return list.includes(str);
+export function isStringFromList(list: string[]) {
+    return (str: string): boolean => {
+        return list.includes(str);
+    };
 }
