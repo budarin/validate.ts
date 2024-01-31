@@ -24,7 +24,7 @@
         "registry": "https://registry.npmjs.org/"
     },
     "dependencies": {
-        "@budarin/json-rpc-interface": "^1.0.2"
+        "@budarin/json-rpc-interface": "^1.0.4"
     },
     "devDependencies": {
         "typescript": "^5.3.2"

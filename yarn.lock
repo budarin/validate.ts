@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@budarin/json-rpc-interface@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.2.tgz#2fa3758bdb40714fe35db6db8ab307dc8f88b0ea"
-  integrity sha512-rhRsLeQns2MRSywaBGi8RGMe4QApwZGcJuafxa7QQcc2CqZ17Rl8QMwA9E0OZDk0bKsX5dOIluB4ygGaXXU9mg==
+"@budarin/json-rpc-interface@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@budarin/json-rpc-interface/-/json-rpc-interface-1.0.4.tgz#0c90a47458c43e6c8b32a4702bf0b405562a19b1"
+  integrity sha512-WJFCdG0ATr3rfsMDay8P9CBBtVyZSm1dXOMlrbQdKdVY/T/DMqsjR+13BBi52VxSExuS0CsjXdkQIZsxC+hbWw==
 
 typescript@^5.3.2:
   version "5.3.3"
