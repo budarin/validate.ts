@@ -1,4 +1,4 @@
-import type { ResultOrError } from '@budarin/json-rpc-interface';
+import type { DeepReadonly, ResultOrError } from '@budarin/json-rpc-interface';
 import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended } from './types.ts';
 
 import { isObject } from './isObject.js';
@@ -20,7 +20,7 @@ export const validateEntity = <T>(
         };
     }
 
-    const obj = data as AnyObject;
+    const obj = getEntity(data as LikeExtended<T>) as AnyObject;
     const keys = Object.keys(fields);
 
     for (let i = 0; i < keys.length; i++) {
@@ -50,5 +50,5 @@ export const validateEntity = <T>(
         }
     }
 
-    return { result: getEntity(obj as LikeExtended<T>) };
+    return { result: obj as DeepReadonly<T> };
 };
