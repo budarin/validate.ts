@@ -1,4 +1,4 @@
-import type { DeepReadonly, ResultOrError } from '@budarin/json-rpc-interface';
+import type { ResultOrError } from '@budarin/json-rpc-interface';
 
 export type LikeType<T> = {
     [K in keyof T]: any;
