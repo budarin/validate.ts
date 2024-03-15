@@ -1,5 +1,5 @@
 import type { DeepReadonly, ResultOrError } from '@budarin/json-rpc-interface';
-import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended, Like } from './types.ts';
+import type { EntityGetter, FieldsValidators, AnyObject, LikeExtended, Like, LikeType } from './types.ts';
 
 import { isObject } from './isObject.js';
 
@@ -8,26 +8,33 @@ export type * from '@budarin/json-rpc-interface';
 export const validateEntity = <T>(
     data: unknown,
     fields: FieldsValidators,
-    getEntity: EntityGetter<Like<T>>,
+    getEntity: EntityGetter<T>,
     entityName: string,
-): ResultOrError<Like<T>> => {
+): ResultOrError<T> => {
+    const entityIsNotAnObjectError = {
+        error: {
+            message: `Сущность "${entityName}" должна быть объектом`,
+            data,
+        },
+    };
+
     if (isObject(data) === false) {
-        return {
-            error: {
-                message: `Сущность "${entityName}" должна быть объектом`,
-                data,
-            },
-        };
+        return entityIsNotAnObjectError;
     }
 
-    const obj = getEntity(data as LikeExtended<T>) as AnyObject;
+    const obj = getEntity(data);
+
+    if (obj === undefined) {
+        return entityIsNotAnObjectError;
+    }
+
     const keys = Object.keys(fields);
 
     for (let i = 0; i < keys.length; i++) {
         const fieldName = keys[i] as keyof FieldsValidators;
         const field = fields[fieldName];
 
-        if (field.required === true && obj[fieldName] === undefined) {
+        if (field.required === true && (obj as AnyObject)[fieldName] === undefined) {
             return {
                 error: {
                     message: `Свойство "${fieldName}" сущности ${entityName} отсутствует`,
@@ -39,7 +46,7 @@ export const validateEntity = <T>(
         for (let j = 0; j < field.validators.length; j++) {
             const validator = field.validators[j];
 
-            if (validator[0](obj[fieldName]) === false) {
+            if (validator[0]((obj as AnyObject)[fieldName]) === false) {
                 return {
                     error: {
                         message: validator[1],
@@ -50,5 +57,5 @@ export const validateEntity = <T>(
         }
     }
 
-    return { result: obj as DeepReadonly<Like<T>> };
+    return { result: obj as DeepReadonly<T> };
 };

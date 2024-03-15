@@ -1,17 +1,15 @@
 import { validateEntity, isIntegerInRange, isStringWithLength } from '../index.js';
-import type { LikeExtended, FieldsValidators, ValidateEntity } from '../types.js';
+import type { LikeExtended, FieldsValidators, ValidateEntity, LikeType, EntityGetter } from '../types.js';
 
 type User = {
     name: string;
     age: number;
 };
 
-function getUser(obj: LikeExtended<User>): User {
-    return {
-        name: obj.name,
-        age: obj.age,
-    };
-}
+const getUser: EntityGetter<User> = (obj: any) => {
+    const { name, age } = obj;
+    return { name, age };
+};
 
 const userFields: FieldsValidators = {
     name: {
@@ -24,7 +22,7 @@ const userFields: FieldsValidators = {
     },
 };
 
-const validateUser: ValidateEntity<User> = (data: unknown) => validateEntity(data, userFields, getUser, 'User');
+const validateUser: ValidateEntity<User> = (data: any) => validateEntity(data, userFields, getUser, 'User');
 
 const user = {
     name: 'Ivan',

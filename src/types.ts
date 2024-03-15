@@ -1,10 +1,14 @@
 import type { DeepReadonly, ResultOrError } from '@budarin/json-rpc-interface';
 
+export type LikeType<T> = {
+    [K in keyof T]: any;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Validator = (...args: any[]) => boolean;
 
-export type ValidateEntity<T> = (data: unknown) => ResultOrError<T>;
-export type EntityGetter<T> = (obj: LikeExtended<T>) => DeepReadonly<T>;
+export type ValidateEntity<T> = (data: any) => ResultOrError<T>;
+export type EntityGetter<T> = (obj: any) => LikeType<T>;
 
 export type FieldsValidators = {
     [key: string]: {
