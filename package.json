@@ -27,7 +27,7 @@
         "@budarin/json-rpc-interface": "^1.0.4"
     },
     "devDependencies": {
-        "typescript": "^5.4.2"
+        "typescript": "^5.4.3"
     },
     "scripts": {
         "build": "sh ./tools/build.sh",
