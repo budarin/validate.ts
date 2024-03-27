@@ -18,27 +18,26 @@ export const validateEntity = <T>(
         },
     };
 
+    if (data === undefined) {
+        return entityIsNotAnObjectError;
+    }
+
     if (isObject(data) === false) {
         return entityIsNotAnObjectError;
     }
 
-    const obj = getEntity(data);
-
-    if (obj === undefined) {
-        return entityIsNotAnObjectError;
-    }
-
+    const obj = data as AnyObject;
     const keys = Object.keys(fields);
 
     for (let i = 0; i < keys.length; i++) {
         const fieldName = keys[i] as keyof FieldsValidators;
         const field = fields[fieldName];
 
-        if (field.required === true && (obj as AnyObject)[fieldName] === undefined) {
+        if (field.required === true && obj[fieldName] === undefined) {
             return {
                 error: {
                     message: `Свойство "${fieldName}" сущности ${entityName} отсутствует`,
-                    data,
+                    data: obj,
                 },
             };
         }
@@ -46,16 +45,16 @@ export const validateEntity = <T>(
         for (let j = 0; j < field.validators.length; j++) {
             const validator = field.validators[j];
 
-            if (validator[0]((obj as AnyObject)[fieldName]) === false) {
+            if (validator[0](obj[fieldName]) === false) {
                 return {
                     error: {
                         message: validator[1],
-                        data,
+                        data: obj,
                     },
                 };
             }
         }
     }
 
-    return { result: obj as DeepReadonly<T> };
+    return { result: getEntity(obj) as DeepReadonly<LikeType<T>> };
 };
