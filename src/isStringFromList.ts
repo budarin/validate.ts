@@ -5,6 +5,6 @@ export function isStringFromList(list: string[]) {
         }
 
         const str = s.trim();
-        return list.includes(s);
+        return list.includes(str);
     };
 }
