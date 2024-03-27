@@ -1,5 +1,10 @@
 export function isStringFromList(list: string[]) {
-    return (str: string): boolean => {
-        return list.includes(str);
+    return (s: unknown): boolean => {
+        if (typeof s !== 'string') {
+            return false;
+        }
+
+        const str = s.trim();
+        return list.includes(s);
     };
 }
